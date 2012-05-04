@@ -1,0 +1,49 @@
+Version 1.0.1
+
+jsgrep: Easily search JavaScript code
+
+Synopsis
+--------
+jsgrep [OPTION | FILE | CONFIG]... PATTERN [OPTION | FILE | CONFIG]...
+
+Description
+-----------
+jsgrep is not just grep written in JavaScript. It's grep designed to work on
+JavaScript source. Instead of matching text, the regular expression matches
+tokens. This is a subtle but surprisingly powerful difference.  jsgrep is
+insensitive to whitespace and it won't find stuff in comments or strings, 
+and it won't find parts of a name when you want to find the whole name.
+
+jsgrep also knows a _tiny_ bit about the structure of JavaScript programs:
+it can match the }, ) or ] that closes a specific {, ( or [.
+
+jsgrep tries to be convenient to use.  Options and filenames can go at the
+beginning of the command line, or at the end of the command line, or both.
+It's recursive by default, and it will only search .js files.  It allows you to
+define macros for commonly used PATTERNs and search sets for commonly used
+FILEs.  I have defined macros to find function declarations, to find which
+modules use a specified module, to find which module defines a function, to
+find references to a variable inside a function, and others.
+
+Execute jsgrep with no options for help.
+
+Disclaimer
+----------
+The source for jsgrep is embarrassing. I had to squeeze all the development
+into 10 minute chunks while my wife was getting dressed, before my daughter
+woke up, during smoke tests, etc. I can't handle that kind of context
+switching, and the code shows it. I've delayed open sourcing it for two
+years in the vain hope that I would have the time (and the inclination) to
+clean it up.
+
+jsgrep is nominally written in Java. I say 'nominally', because it's really
+written in a generic C-like language. I don't know Java well. Any problems
+I ran into were simply obstacles to be overcome, not learning opportunities,
+because of the time problem I had. I use Hashtables and ArrayLists extensively
+because I didn't want to take the time to figure out more appropriate
+collection classes, a lot of methods are declared with "throws Throwable"
+because that was an easy way to please the compiler, etc.
+
+-Steve Francis
+sfrancisx@yahoo.com
+
